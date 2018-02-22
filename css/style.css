@@ -1,0 +1,33 @@
+*{
+  border: 3px solid black;
+  margin: 5px;
+  padding: 10px;
+  background-color: sandybrown;
+}
+/* Top of index html */
+nav{
+  border: 3px solid black;
+  margin: 5px;
+  padding: 10px;
+  width: 98%;
+}
+nav h1{
+  display: inline-block;
+  font-size: 60px;
+  color: purple;
+  font-weight: 900;
+  margin-left: 100px;
+  padding: 20px;
+}
+
+nav button{
+  background-color: green;
+  width: 140px;
+  height: 100px;
+  display: inline-block;
+  margin-left: 650px;
+  color: rgb(216, 122, 14);
+  font-size: 25px;
+  font-weight: 800;
+}
+/* Top of body after header in section (id = top) html */
