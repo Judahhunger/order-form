@@ -66,10 +66,13 @@ function eventHandler(event){
   }
   var newProduct = new BusProduct(newName, newTotal, newUser, newStreet, newCity, newState, newZip);
   productsINLocal.push(newProduct);
-  localStorage.setItem('BusProduct', JSON.stringify(productsINLocal));
+  localStorage.setItem('productsINLocal', JSON.stringify(productsINLocal));
   event.target.reset();
 }
-
+if(localStorage.productsINLocal){
+  var items = JSON.parse(localStorage.getItem('productsINLocal'));
+  productsINLocal.push(items);
+}
 
 
 renderSelection();
