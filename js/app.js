@@ -3,12 +3,20 @@
 
 
 BusProduct.allProducts = [];//array of all instances for products.
+var orderForm = document.getElementById('orderForm');
 var formSelector = document.getElementById('buyProduct');//getting selector to append options to it.
+var GotoCart = document.getElementById('cart');
 //constructor of BusMall products.
-function BusProduct(name, filepath){
+// Text inputs for each of: name, street, city, state, ZIP code, and phone number
+function BusProduct(name, total, user, street, city, state, zip, filepath){
   this.name = name;
-  this.filepath = filepath;//pulling the img from folder it's located in
-  this.clicks = 0;// tracks each time that instance/img is clicked on.
+  this.total = total;
+  this.user = user;
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.zip = zip;
+  this.filepath = filepath;
   BusProduct.allProducts.push(this);//pushes all instances and properties into the array of all instances
 }
 
@@ -41,5 +49,23 @@ function renderSelection(){
     formSelector.appendChild(product);
   }
 }
+function eventHandler(event){
+  event.preventDefault();
+
+  var newName = event.target.name.value;
+  var newTotal = event.target.total.value;
+  var newUser = event.target.user.value;
+  var newStreet = event.target.street.value;
+  var newCity = event.target.city.value;
+  var newState = event.target.state.value;
+  var newZip = event.target.zip.value;
+
+  new BusProduct(newName, newTotal, newUser, newStreet, newCity, newState, newZip);
+  
+  localStorage.setItem('BusProduct', JSON.stringify(BusProduct.allProducts));
+  event.target.reset();
+}
 
 renderSelection();
+orderForm.addEventListener('submit', eventHandler);
+GotoCart.addEventListener('click',function(){ window.location = 'cart.html';});
