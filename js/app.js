@@ -1,7 +1,7 @@
 'use strict';
 
 
-
+var productsINLocal = [];
 BusProduct.allProducts = [];//array of all instances for products.
 var orderForm = document.getElementById('orderForm');
 var formSelector = document.getElementById('buyProduct');//getting selector to append options to it.
@@ -51,7 +51,7 @@ function renderSelection(){
 }
 function eventHandler(event){
   event.preventDefault();
-
+  
   var newName = event.target.name.value;
   var newTotal = event.target.total.value;
   var newUser = event.target.user.value;
@@ -59,12 +59,18 @@ function eventHandler(event){
   var newCity = event.target.city.value;
   var newState = event.target.state.value;
   var newZip = event.target.zip.value;
-
-  new BusProduct(newName, newTotal, newUser, newStreet, newCity, newState, newZip);
-  
-  localStorage.setItem('BusProduct', JSON.stringify(BusProduct.allProducts));
+  for(var i = 0; i < BusProduct.allProducts; i++){
+    if(BusProduct.allProducts[i].total < 1){
+      BusProduct.allProducts[i] = '';
+    }
+  }
+  var newProduct = new BusProduct(newName, newTotal, newUser, newStreet, newCity, newState, newZip);
+  productsINLocal.push(newProduct);
+  localStorage.setItem('BusProduct', JSON.stringify(productsINLocal));
   event.target.reset();
 }
+
+
 
 renderSelection();
 orderForm.addEventListener('submit', eventHandler);
