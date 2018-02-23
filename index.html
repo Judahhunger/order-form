@@ -13,18 +13,38 @@
   <header>
     <nav>
         <h1>BusMall Order Form</h1>
-        <Button>Go to Cart</Button>
+        <Button id="cart">Go to Cart</Button>
     </nav>
   </header>
 
   <section id="top">
-    <form action="">
-      <select name="BusMall-products" id="buyProduct">
-        
-      </select>
-      <label for=""></label>
-      <input type="number" min="0">
-      <button id="add">Add to Cart</button>
+    <form id="orderForm">
+      <fieldset>
+          <label for="name">Select Item</label>
+        <select name="name" id="buyProduct">
+          
+        </select>
+        <label for="total">number of Items</label>
+        <input name="total" min="0" type="number">
+
+        <legend></legend>
+        <label for="user">Your Name Goes here</label>
+        <input name="user" type="text" />
+  
+        <label for="street">Street Address</label>
+        <input name="street" type= "text" />
+  
+        <label for="city">City</label >
+        <input name="city" type="text"/>
+  
+        <label for="state">State</label>
+        <input name="state" type="text" />
+
+        <label for="zip">ZIP</label>
+        <input name="zip" type="text" />
+
+        <button id="add" type="submit">Add to Cart</button>
+      </fieldset>
     </form>
   </section>
 
